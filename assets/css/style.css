@@ -1,0 +1,123 @@
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url(../iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+       url(../iconfont/MaterialIcons-Regular.woff) format('woff'),
+       url(../iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+body{
+	overflow: hidden;
+	display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+.board{
+	height: 100%;
+}
+.instument-panel{
+	width: 70px;
+	overflow: auto;
+  background-color: #ee6e73;
+}
+.item{	width: 50px;
+	height: 50px;
+	background-color: #607d8b;
+	border-radius: 3px;
+	margin-bottom: 2px;
+  cursor: pointer;
+}
+.item:hover{
+  background-color: #546e7a;
+  cursor: pointer;
+}
+.jscolor{
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  border:0px;
+}
+main {
+	flex: 1 0 auto;
+}
+.row{
+  margin-bottom: 0px !important;
+}
+ /*************icons*****************/
+ .icon{
+ 	width: 48px;
+ 	height: 48px;
+ 	margin: 0 auto;
+ 	display: block;
+ }
+ .zoom-in{
+ 	background-image: url('../images/icons/zoom_in_white_48x48.png');
+ }
+.zoom-out{
+ 	background-image: url('../images/icons/zoom_out_white_48x48.png');
+ }
+.circle{
+ 	background-image: url('../images/icons/circle_white_48x48.png');	
+ }
+.line{
+ 	background-image: url('../images/icons/line_white_48x48.png');	
+   background-size: cover;
+ }
+.square{
+ 	background-image: url('../images/icons/crop_square_white_48x48.png');	
+ }
+ .fill-square{
+ 	background-image: url('../images/icons/fill_square_white_48x48.png');	
+ }
+.pen{
+ 	background-image: url('../images/icons/create_white_48x48.png');	
+ }
+ .text{
+ 	background-image: url('../images/icons/text_white_48x48.png');	
+ }
+.mark{
+  background-image: url('../images/icons/mark_white_48x48.png');  
+ }
+.mouse{
+  background-image: url('../images/icons/icon_board_mouse.png');
+   background-size: cover;
+}
+.bringToFront{
+  background-image: url("../images/icons/icon_board_lup.png");
+   background-size: cover;
+}
+.sendToBack{
+ background-image: url("../images/icons/icon_board_ldown.png"); 
+  background-size: cover;
+}
+.remove{
+ background-image: url("../images/icons/delete_white_48x48.png"); 
+  background-size: cover;
+}

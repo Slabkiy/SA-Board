@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>SA - board</title>
+	<link href="assets/css/material.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+	 <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+	 <link href="https://fonts.googleapis.com/css?family=La+Belle+Aurore" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Archivo+Black|Audiowide|Fredoka+One" rel="stylesheet">
+	<link rel="stylesheet" href="assets/materialize/css/materialize.css" media="screen,projection" />
+	<link rel="stylesheet" href="assets/socicon/styles.css" />
+	<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+	<main>
+		<div class="row">
+			<div class="col instument-panel">
+				<div class="item" onmousedown="onZoomIn()" ><i class="icon zoom-in"></i></div>
+				<div class="item" onmousedown="onZoomOut()" ><i class="icon zoom-out"></i></div>
+				<div class="item" onmousedown="desabledModules()" ><i class="icon mouse"></i></div>
+				<div class="item" onmousedown="startDrawingMode()" ><i class="icon pen"></i></div>
+				<div class="item" onmousedown="startLineDrawing()" ><i class="icon line"></i></div>
+				<div class="item" onmousedown="startCircleDrawing()" ><i class="icon circle"></i></div>
+				<div class="item" onmousedown="startRectDrawing()" ><i class="icon square"></i></div>
+				<div class="item" onmousedown="startFillRectDrawing()" ><i class="icon fill-square"></i></div>
+				<div class="item" onmousedown="startTextDrawing()" ><i class="icon text"></i></div>
+				<div class="item" onmousedown="startMarkerDrawing()" ><i class="icon mark"></i></div>
+				<div class="item" onmousedown="bringToFront()" ><i class="icon bringToFront"></i></div>
+				<div class="item" onmousedown="sendToBack()" ><i class="icon sendToBack"></i></div>
+				<div class="item" onmousedown="removeObjects()" ><button class="jscolor {valueElement:'chosen-value', onFineChange:'setColor(this)'}"></button></i></div>
+				<div class="item" onmousedown="sendToBack()" ><i class="icon remove"></i></div>
+			</div>
+			<div class="col workspace">
+				<div class="board"></div>
+			</div>
+		</div>
+	</main>
+	<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">SA - Board</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <button onclick="TogetherJS(this); return false;" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i> Start TogetherJS</button>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>
+    <script src="https://togetherjs.com/togetherjs-min.js"></script>
+	<script type="text/javascript" src="assets/js/board/fabricjs/dist/fabric.js"></script>
+	<script type="text/javascript" src="assets/js/board/jscolor/jscolor.js"></script>
+	<script type="text/javascript" src="assets/js/board/board.js"></script>
+
+</body>
+</html>
