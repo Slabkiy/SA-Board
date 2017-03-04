@@ -88,22 +88,7 @@ for (var i = 0; i < items.length; i ++){
     activeItem(e);
  });   
 }
-var lineWidthRange = document.getElementsByClassName('line-width')[0];
-lineWidthRange.style.top = items[items.length-1].offsetTop+"px";
-lineWidthRange.style.left = items[items.length-1].offsetLeft+48+"px";
-var isSetLineWidth = false;
-function selectLineWidth(){
-    isSetLineWidth = !isSetLineWidth;
-    if(isSetLineWidth){
-        lineWidthRange.style.display = "block";
-    }else{
-        lineWidthRange.style.display = "none";
-    }
-   
-}
-document.getElementById('setWidth').oninput = function(e){
-    lineWidth = e.target.value;
-}
+
 function activeItem(e){
     for( var i = 0; i < items.length; i++ ){
         items[i].classList = 'item';
@@ -226,22 +211,23 @@ function sendToBackTogether(names) {
 /*============z-index +===========*/
 /*================Set line windth====================*/
 
-function setLineWidth(n) {
-    switch (n) {
-        case 1:
-            lineWidth = 1;
-            break;
-        case 2:
-            lineWidth = 5;
-            break;
-        case 3:
-            lineWidth = 15;
-            break;
-        default:
-
+var lineWidthRange = document.getElementsByClassName('line-width')[0];
+lineWidthRange.style.top = items[items.length-1].offsetTop+"px";
+lineWidthRange.style.left = items[items.length-1].offsetLeft+48+"px";
+var isSetLineWidth = false;
+function selectLineWidth(){
+    isSetLineWidth = !isSetLineWidth;
+    if(isSetLineWidth){
+        lineWidthRange.style.display = "block";
+    }else{
+        lineWidthRange.style.display = "none";
     }
+   
 }
-
+document.getElementById('setWidth').oninput = function(e){
+    lineWidth = e.target.value;
+    lineWidth = parseInt(lineWidth);
+}
 /*================Set line windth====================*/
 /*******************Set Color*************************/
 function setColor(picker){
@@ -567,7 +553,6 @@ function startRectDrawing() {
             isMouseDown = true;
             var date = new Date();
             name = "rect" + date.getTime();
-            console.log(o);
             var pointer = board.getPointer(o.e);
             originX = pointer.x;
             originY = pointer.y;
