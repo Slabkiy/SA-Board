@@ -28,8 +28,8 @@
 				<div class="item" onmousedown="startMarkerDrawing()" ><i class="icon mark"></i></div>
 				<div class="item" onmousedown="bringToFront()" ><i class="icon bringToFront"></i></div>
 				<div class="item" onmousedown="sendToBack()" ><i class="icon sendToBack"></i></div>
-				<div class="item" onmousedown="removeObjects()" ><button class="jscolor {valueElement:'chosen-value', onFineChange:'setColor(this)'}"></button></i></div>
-				<div class="item" onmousedown="sendToBack()" ><i class="icon remove"></i></div>
+				<div class="item" ><button class="jscolor {valueElement:'chosen-value', onFineChange:'setColor(this)'}"></button></i></div>
+				<div class="item" onmousedown="removeObjects()" ><i class="icon remove"></i></div>
 			</div>
 			<div class="col workspace">
 				<div class="board"></div>
@@ -41,7 +41,9 @@
             <div class="row">
               <div class="col l6 s12">
                 <h5 class="white-text">SA - Board</h5>
-                <p class="grey-text text-lighten-4"></p>
+                <p class="grey-text text-lighten-4">
+                	
+                </p>
               </div>
               <div class="col l4 offset-l2 s12">
                 <button onclick="TogetherJS(this); return false;" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i> Start TogetherJS</button>
