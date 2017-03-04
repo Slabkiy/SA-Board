@@ -44,4 +44,4 @@ TogetherJS allows your do this together. You can see all the changes on the boar
 Also you can see some built-in features on the site [TogetherJS](https://togetherjs.com/ "TogetherJS").
 
 
-by ![] (https://slabkiy.github.io/assets/images/logo.svg) Slabkiy Andrey
+[![] (https://slabkiy.github.io/assets/images/logo.svg)](https://slabkiy.github.io/)
