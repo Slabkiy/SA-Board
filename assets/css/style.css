@@ -39,6 +39,9 @@ body{
     min-height: 100vh;
     flex-direction: column;
 }
+.active{
+  background-color: #546e7a !important;
+}
 .board{
 	height: 100%;
 }
@@ -69,6 +72,19 @@ main {
 }
 .row{
   margin-bottom: 0px !important;
+}
+.line-width{
+  width: 200px;
+  position: absolute;
+  z-index: 999;
+  height: 50px;
+  background-color: #546e7a;
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+  display: none;
+}
+input[type="range"]{
+  margin: 0 auto;
 }
  /*************icons*****************/
  .icon{
@@ -120,4 +136,7 @@ main {
 .remove{
  background-image: url("../images/icons/delete_white_48x48.png"); 
   background-size: cover;
+}
+.line_weight{
+  background-image: url("../images/icons/line_weight.png");
 }

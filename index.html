@@ -30,6 +30,12 @@
 				<div class="item" onmousedown="sendToBack()" ><i class="icon sendToBack"></i></div>
 				<div class="item" ><button class="jscolor {valueElement:'chosen-value', onFineChange:'setColor(this)'}"></button></i></div>
 				<div class="item" onmousedown="removeObjects()" ><i class="icon remove"></i></div>
+				<div class="item" onmousedown="selectLineWidth()" ><i class="icon line_weight"></i></div>
+			</div>
+			<div class="line-width">
+			    <p class="range-field">
+			      <input type="range" id="setWidth" min="1" max="35" />
+			    </p>
 			</div>
 			<div class="col workspace">
 				<div class="board"></div>
@@ -46,7 +52,7 @@
                 </p>
               </div>
               <div class="col l4 offset-l2 s12">
-                <button onclick="TogetherJS(this); return false;" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i> Start TogetherJS</button>
+                <button onclick="TogetherJS(this); return false;" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i> Start draw together</button>
               </div>
             </div>
           </div>

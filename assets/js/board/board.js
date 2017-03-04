@@ -70,8 +70,6 @@ TogetherJS.hub.on('getBoard', function(msg) {
 
 function getBoard(bo) {
     if(board._objects.length > 0) return;
-    
-    console.log(bo);
     board.clear();
     board.loadFromJSON(bo);
     board.renderAll();
@@ -82,6 +80,37 @@ function objectsEvented(status){
         obj[i].evented = status;
         obj[i].selected = status;
     }
+}
+
+var items = document.getElementsByClassName('item');
+for (var i = 0; i < items.length; i ++){
+ items[i].addEventListener('click', function(e){
+    activeItem(e);
+ });   
+}
+var lineWidthRange = document.getElementsByClassName('line-width')[0];
+lineWidthRange.style.top = items[items.length-1].offsetTop+"px";
+lineWidthRange.style.left = items[items.length-1].offsetLeft+48+"px";
+var isSetLineWidth = false;
+function selectLineWidth(){
+    isSetLineWidth = !isSetLineWidth;
+    if(isSetLineWidth){
+        lineWidthRange.style.display = "block";
+    }else{
+        lineWidthRange.style.display = "none";
+    }
+   
+}
+document.getElementById('setWidth').oninput = function(e){
+    lineWidth = e.target.value;
+}
+function activeItem(e){
+    for( var i = 0; i < items.length; i++ ){
+        items[i].classList = 'item';
+    }
+    var item = e.target.parentElement;
+    item.classList.add('active');
+
 }
 function toActivateTheModule(module) {
 
