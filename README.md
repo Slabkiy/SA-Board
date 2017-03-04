@@ -42,3 +42,6 @@ Fabric.js allows you to move object on the board, change the size of an object, 
 TogetherJS allows your do this together. You can see all the changes on the board in real time.
 
 Also you can see some built-in features on the site [TogetherJS](https://togetherjs.com/ "TogetherJS").
+
+
+by ![] (https://slabkiy.github.io/assets/images/logo.svg) Slabkiy Andrey
