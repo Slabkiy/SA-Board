@@ -1012,36 +1012,40 @@ function markerDrawingTogether(object, name) {
 /*=========================Marker drawing============================*/
 
 /*=========================Upload images=============================*/
-
-function uploadImages() {
-    console.log('ok')
-    var url = "http://hydra/demo/uploads/1.png";
+var isAddImageUrl = false;
+var imageUrl_div = document.getElementsByClassName('image-url')[0];
+imageUrl_div.style.top = items[10].offsetTop+"px";
+imageUrl_div.style.left = items[10].offsetLeft+48+"px";
+function addImagesUrl(){
+    isAddImageUrl = !isAddImageUrl;
+    if(isAddImageUrl){
+        imageUrl_div.style.display = "block";
+    }else{
+        imageUrl_div.style.display = "none";
+    }
+}
+document.getElementsByClassName('add-btn')[0].addEventListener('click', function(e){
+    var url = document.getElementById('image_url');
+    console.log(url.value)
+    if( url.value == '' ){
+        Materialize.toast('Image url is empty', 4000);
+        return;
+    }
+    /*console.log(url.value.indexOf('http://') !== 0 || url.value.indexOf('https://') !== 0)
+    if( url.value.indexOf('http://') !== 0 || url.value.indexOf('https://') !== 0 ){
+        Materialize.toast('It does not link', 4000);
+        return;
+    }*/
+    /*if( url.value.indexOf('.png') == -1 || url.value.indexOf('.jpg') == -1 || url.value.indexOf('.jpeg') == -1 || url.value.indexOf('.gif') == -1){
+        Materialize.toast("so it`s not a picture", 4000);
+        return;
+    }*/
+    uploadImages(url.value);
+});
+function uploadImages(img_url) {
+    var url = img_url;
     addImageOnBoard(url);
-    var uploadImagesInput = document.getElementById('uploadImagesInput');
-    uploadImagesInput.click();
-    uploadImagesInput.onchange = function(e) {
-       
-        var url = "http://hydra/demo/uploads/1.png";
-        addImageOnBoard(url);
-        /*console.log(e.target.files);
-        var xhr = new XMLHttpRequest();
-
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState != 4) return;
-
-            if (xhr.status != 200) {
-                alert(xhr.status + ': ' + xhr.statusText);
-            } else {
-                alert(xhr.responseText);
-            }
-
-        };
-        var formData = new FormData();
-        formData.append("myfile", file);
-        xhr.open("POST", url, true);
-        xhr.send(formData);
-    */
-    };
+    
     board.renderAll();
 }
 

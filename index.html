@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="assets/materialize/css/materialize.css" media="screen,projection" />
 	<link rel="stylesheet" href="assets/socicon/styles.css" />
 	<link rel="stylesheet" href="assets/css/style.css" />
+	<meta name="description" content="It is the module for you site which allows you to draw on the interactive board together">
 </head>
 <body>
 	<main>
@@ -25,6 +26,7 @@
 				<div class="item" onmousedown="startFillRectDrawing()" ><i class="icon fill-square"></i></div>
 				<div class="item" onmousedown="startTextDrawing()" ><i class="icon text"></i></div>
 				<div class="item" onmousedown="startMarkerDrawing()" ><i class="icon mark"></i></div>
+				<div class="item" onmousedown="addImagesUrl()" ><i class="icon image"></i></div>
 				<div class="item" onmousedown="bringToFront()" ><i class="icon bringToFront"></i></div>
 				<div class="item" onmousedown="sendToBack()" ><i class="icon sendToBack"></i></div>
 				<div class="item" ><button class="jscolor {valueElement:'chosen-value', onFineChange:'setColor(this)'}"></button></i></div>
@@ -35,6 +37,14 @@
 			    <p class="range-field">
 			      <input type="range" id="setWidth" min="1" max="35" />
 			    </p>
+			</div>
+			<div class="image-url">
+			    <div class="input-field col s8">
+		          <input id="image_url" type="text" class="validate">
+		        </div>
+		        <div class="col s4">
+		        	<a class="waves-effect waves-light btn add-btn"><i class="material-icons">add</i></a>
+		        </div>
 			</div>
 			<div class="col workspace">
 				<div class="board"></div>
@@ -63,6 +73,8 @@
           </div>
         </footer>
     <script src="https://togetherjs.com/togetherjs-min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="assets/materialize/js/materialize.min.js"></script>
 	<script type="text/javascript" src="assets/js/board/fabricjs/dist/fabric.js"></script>
 	<script type="text/javascript" src="assets/js/board/jscolor/jscolor.js"></script>
 	<script type="text/javascript" src="assets/js/board/board.js"></script>

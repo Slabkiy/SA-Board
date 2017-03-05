@@ -86,6 +86,25 @@ main {
 input[type="range"]{
   margin: 0 auto;
 }
+.image-url{
+  width: 300px;
+
+  position: absolute;
+  z-index: 999;
+  background-color: #546e7a;
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+  display: none;
+}
+.add-btn{
+  margin-top: 8px;
+
+}
+input[type="text"]{
+  height: auto !important;
+  margin-bottom: 14px !important;
+  color: #fff;
+}
  /*************icons*****************/
  .icon{
  	width: 48px;
@@ -139,4 +158,7 @@ input[type="range"]{
 }
 .line_weight{
   background-image: url("../images/icons/line_weight.png");
+}
+.image{
+  background-image: url("../images/icons/insert_photo_white_48x48.png");
 }
