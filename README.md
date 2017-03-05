@@ -3,7 +3,7 @@
 
 ##What is it? 0_o
 
-SA - Board  it is the module for you site which allows you to draw on the interactive board together.
+SA - Board is а module for you site which allows you to draw on the interactive board together
 
 
 ##How it`s work? 
