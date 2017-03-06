@@ -981,7 +981,7 @@ function startMarkerDrawing(e) {
                 var obj = {
                     pointer_end: pointer_end,
                     pointer_start: pointer_start,
-                    stroke: circle,
+                    stroke: color,
                     strokeWidth: 15 + lineWidth
                 };
                 TogetherJS.send({

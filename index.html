@@ -61,7 +61,7 @@
                 </p>
               </div>
               <div class="col l4 offset-l2 s12">
-                <button onclick="TogetherJS(this); return false;" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i> Start draw together</button>
+                <button id="start-togetherjs" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i> Start draw together</button>
               </div>
             </div>
           </div>
@@ -78,6 +78,15 @@
 	<script type="text/javascript" src="assets/js/board/fabricjs/dist/fabric.js"></script>
 	<script type="text/javascript" src="assets/js/board/jscolor/jscolor.js"></script>
 	<script type="text/javascript" src="assets/js/board/board.js"></script>
-	
+	<button id="start-togetherjs">Start TogetherJS</button>
+	<script>
+		var TogetherJSConfig_dontShowClicks = true; 
+		
+		$(function () {
+			$("#start-togetherjs").click(TogetherJS);
+				
+		});
+
+	</script>
 </body>
 </html>

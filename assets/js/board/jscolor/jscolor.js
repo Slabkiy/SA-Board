@@ -995,7 +995,7 @@ var jsc = {
 		// Accessing the picked color
 		//
 		this.hsv = [0, 0, 100]; // read-only  [0-360, 0-100, 0-100]
-		this.rgb = [255, 255, 255]; // read-only  [0-255, 0-255, 0-255]
+		this.rgb = [0, 0, 0]; // read-only  [0-255, 0-255, 0-255]
 
 		// Color Picker options
 		//
