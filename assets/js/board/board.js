@@ -18,8 +18,8 @@ boardScale = 1,
 
 document.getElementsByClassName('instument-panel')[0].style.height = this.innerHeight - document.getElementsByClassName('page-footer')[0].clientHeight + "px";
 workspace = document.getElementsByClassName('workspace')[0];
-workspace.style.width = this.innerWidth - document.getElementsByClassName('instument-panel')[0].clientWidth + "px";
-workspace.style.height = this.innerHeight - document.getElementsByClassName('page-footer')[0].clientHeight + "px";
+workspace.style.width = document.body.clientWidth - (document.getElementsByClassName('instument-panel')[0].clientWidth + document.getElementsByClassName('instument-panel')[0].scrollWidth) + "px";
+workspace.style.height = document.body.clientHeight - document.getElementsByClassName('page-footer')[0].clientHeight + "px";
 board_div = document.getElementsByClassName('board')[0];
 var board = document.createElement('canvas');
 /*устанавливаем высоту и ширину canvas*/

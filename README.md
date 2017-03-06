@@ -3,16 +3,16 @@
 
 ##What is it? 0_o
 
-SA - Board is а module for you site which allows you to draw on the interactive board together
+SA - Board is а module for you application which allows you to draw on the interactive board together
 
 
-##How it`s work? 
+##How it`s work?
 
 Everything just..
 
 [TogetherJS](https://togetherjs.com/ "TogetherJS")
 >TogetherJS is a free, open source JavaScript library by Mozilla that adds collaboration features and tools to your website.
->By adding TogetherJS to your site, your users can help each other out on a website in real time! 
+>By adding TogetherJS to your site, your users can help each other out on a website in real time!
 
 [Fabric.js](http://fabricjs.com/ "Fabric.js")
 >Fabric provides interactive object model on top of canvas element

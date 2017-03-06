@@ -46,9 +46,22 @@ body{
 	height: 100%;
 }
 .instument-panel{
-	width: 70px;
+	width: 85px;
 	overflow: auto;
   background-color: #673ab7;
+}
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 0px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }
 .item{	width: 50px;
 	height: 50px;
@@ -119,26 +132,26 @@ input[type="text"]{
  	background-image: url('../images/icons/zoom_out_white_48x48.png');
  }
 .circle{
- 	background-image: url('../images/icons/circle_white_48x48.png');	
+ 	background-image: url('../images/icons/circle_white_48x48.png');
  }
 .line{
- 	background-image: url('../images/icons/line_white_48x48.png');	
+ 	background-image: url('../images/icons/line_white_48x48.png');
    background-size: cover;
  }
 .square{
- 	background-image: url('../images/icons/crop_square_white_48x48.png');	
+ 	background-image: url('../images/icons/crop_square_white_48x48.png');
  }
  .fill-square{
- 	background-image: url('../images/icons/fill_square_white_48x48.png');	
+ 	background-image: url('../images/icons/fill_square_white_48x48.png');
  }
 .pen{
- 	background-image: url('../images/icons/create_white_48x48.png');	
+ 	background-image: url('../images/icons/create_white_48x48.png');
  }
  .text{
- 	background-image: url('../images/icons/text_white_48x48.png');	
+ 	background-image: url('../images/icons/text_white_48x48.png');
  }
 .mark{
-  background-image: url('../images/icons/mark_white_48x48.png');  
+  background-image: url('../images/icons/mark_white_48x48.png');
  }
 .mouse{
   background-image: url('../images/icons/icon_board_mouse.png');
@@ -149,11 +162,11 @@ input[type="text"]{
    background-size: cover;
 }
 .sendToBack{
- background-image: url("../images/icons/icon_board_ldown.png"); 
+ background-image: url("../images/icons/icon_board_ldown.png");
   background-size: cover;
 }
 .remove{
- background-image: url("../images/icons/delete_white_48x48.png"); 
+ background-image: url("../images/icons/delete_white_48x48.png");
   background-size: cover;
 }
 .line_weight{
