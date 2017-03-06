@@ -12,8 +12,8 @@ var isMouseDown = false,
     isMarkerMode = false,
     isDrawing = false,
     lineWidth = 1,
-    color = "#000";
-boardScale = 1,
+    color = "#000",
+    boardScale = 1,
     SCALE_FACTOR = 1.2;
 
 document.getElementsByClassName('instument-panel')[0].style.height = this.innerHeight - document.getElementsByClassName('page-footer')[0].clientHeight + "px";

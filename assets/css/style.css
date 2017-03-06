@@ -45,13 +45,20 @@ body{
 .board{
 	height: 100%;
 }
+.gitLink{
+  display: flex;
+  display: -moz-grid-line;
+}
+.gitLink li{
+  margin: 0 5px 0 5px;
+}
 .instument-panel{
 	width: 85px;
 	overflow: auto;
   background-color: #673ab7;
 }
 ::-webkit-scrollbar {
-    width: 6px;
+    width: 1em;
 }
 
 ::-webkit-scrollbar-track {
