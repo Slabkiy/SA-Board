@@ -13,7 +13,7 @@ var isMouseDown = false,
     isDrawing = false,
     lineWidth = 1,
     color = "#000";
-    boardScale = 1,
+boardScale = 1,
     SCALE_FACTOR = 1.2;
 
 document.getElementsByClassName('instument-panel')[0].style.height = this.innerHeight - document.getElementsByClassName('page-footer')[0].clientHeight + "px";
@@ -47,11 +47,12 @@ fabric.Canvas.prototype.getItemByName = function(name) {
     return object;
 };
 
-function boardJSON(){
-    return board.toJSON('name')
+function boardJSON() {
+    return board.toJSON('name');
 }
+
 function sendBoard() {
-    
+
     if (TogetherJS.running && board._objects.length !== 0) {
         TogetherJS.send({
             type: "getBoard",
@@ -69,84 +70,86 @@ TogetherJS.hub.on('getBoard', function(msg) {
 });
 
 function getBoard(bo) {
-    if(board._objects.length > 0) return;
+    if (board._objects.length > 0) return;
     board.clear();
     board.loadFromJSON(bo);
     board.renderAll();
 }
-function objectsEvented(status){
+
+function objectsEvented(status) {
     var obj = board.getObjects();
-    for (var i = 0; i < obj.length; i++){
+    for (var i = 0; i < obj.length; i++) {
         obj[i].evented = status;
         obj[i].selected = status;
     }
 }
 
 var items = document.getElementsByClassName('item');
-for (var i = 0; i < items.length; i ++){
- items[i].addEventListener('click', function(e){
-    activeItem(e);
- });   
+for (var i = 0; i < items.length; i++) {
+    items[i].addEventListener("click", function(e) {
+        activeItem(e);
+    });
 }
 
-function activeItem(e){
-    for( var i = 0; i < items.length; i++ ){
+function activeItem(e) {
+    for (var i = 0; i < items.length; i++) {
         items[i].classList = 'item';
     }
     var item = e.target.parentElement;
     item.classList.add('active');
 
 }
+
 function toActivateTheModule(module) {
 
     switch (module) {
         case 0: //rect module
-            isMouseDown = isLineMode = board.isDrawingMode =  isCircleMode = isFillRectMode = isMarkerMode = false;
+            isMouseDown = isLineMode = board.isDrawingMode = isCircleMode = isFillRectMode = isMarkerMode = false;
             isRectMode = !isRectMode;
             objectsEvented(false);
             break;
         case 1: //fillRect module
-            isMouseDown = isRectMode = board.isDrawingMode =  isCircleMode = isLineMode = isMarkerMode = false;
+            isMouseDown = isRectMode = board.isDrawingMode = isCircleMode = isLineMode = isMarkerMode = false;
             isFillRectMode = !isFillRectMode;
             objectsEvented(false);
             break;
         case 2: //line module
-            isMouseDown = isCircleMode  = board.isDrawingMode =  isRectMode = isFillRectMode = isMarkerMode = false;
+            isMouseDown = isCircleMode = board.isDrawingMode = isRectMode = isFillRectMode = isMarkerMode = false;
             isLineMode = !isLineMode;
             objectsEvented(false);
             break;
         case 3: //circle module
-            isMouseDown = isLineMode  = board.isDrawingMode = isRectMode  = isFillRectMode = isMarkerMode = false;
+            isMouseDown = isLineMode = board.isDrawingMode = isRectMode = isFillRectMode = isMarkerMode = false;
             isCircleMode = !isCircleMode;
             objectsEvented(false);
             break;
         case 4: //marker module
-            isMouseDown = isLineMode  = board.isDrawingMode = isRectMode  = isFillRectMode = isCircleMode = false;
+            isMouseDown = isLineMode = board.isDrawingMode = isRectMode = isFillRectMode = isCircleMode = false;
             isMarkerMode = !isMarkerMode;
             objectsEvented(false);
             break;
         case 5: //free drawing module
-            isMouseDown = isLineMode  = isMarkerMode = isRectMode  = isFillRectMode = isCircleMode = false;
+            isMouseDown = isLineMode = isMarkerMode = isRectMode = isFillRectMode = isCircleMode = false;
             board.isDrawingMode = !board.isDrawingMode;
             objectsEvented(false);
-            break;    
+            break;
         default:
 
     }
 
 }
 /*============z-index +===========*/
-function bringToFront(){
+function bringToFront() {
     var activeObject = board.getActiveObject(),
         activeGroup = board.getActiveGroup(),
         names = [];
-    if( activeObject ){
+    if (activeObject) {
         names.push(activeObject.name);
         activeObject.bringToFront();
     }
-    if(activeGroup){
+    if (activeGroup) {
         var objects = activeGroup._objects;
-        for( var i = 0; i < objects.length; i++ ){
+        for (var i = 0; i < objects.length; i++) {
             names.push(objects[i].name);
             objects[i].bringToFront();
         }
@@ -166,24 +169,24 @@ TogetherJS.hub.on('bringToFrontTogether', function(msg) {
 });
 
 function bringToFrontTogether(names) {
-    for ( var i = 0; i < names.length; i++ ){
+    for (var i = 0; i < names.length; i++) {
         var obj = board.getItemByName(names[i]);
         obj.bringToFront();
     }
 }
 /*============z-index +===========*/
 /*============z-index +===========*/
-function sendToBack(){
+function sendToBack() {
     var activeObject = board.getActiveObject(),
         activeGroup = board.getActiveGroup(),
         names = [];
-    if( activeObject ){
+    if (activeObject) {
         names.push(activeObject.name);
         activeObject.sendToBack();
     }
-    if(activeGroup){
+    if (activeGroup) {
         var objects = activeGroup._objects;
-        for( var i = 0; i < objects.length; i++ ){
+        for (var i = 0; i < objects.length; i++) {
             names.push(objects[i].name);
             objects[i].sendToBack();
         }
@@ -203,7 +206,7 @@ TogetherJS.hub.on('sendToBackTogether', function(msg) {
 });
 
 function sendToBackTogether(names) {
-    for ( var i = 0; i < names.length; i++ ){
+    for (var i = 0; i < names.length; i++) {
         var obj = board.getItemByName(names[i]);
         obj.sendToBack();
     }
@@ -212,27 +215,28 @@ function sendToBackTogether(names) {
 /*================Set line windth====================*/
 
 var lineWidthRange = document.getElementsByClassName('line-width')[0];
-lineWidthRange.style.top = items[items.length-1].offsetTop+"px";
-lineWidthRange.style.left = items[items.length-1].offsetLeft+48+"px";
+lineWidthRange.style.top = items[items.length - 1].offsetTop + "px";
+lineWidthRange.style.left = items[items.length - 1].offsetLeft + 48 + "px";
 var isSetLineWidth = false;
-function selectLineWidth(){
+
+function selectLineWidth() {
     isSetLineWidth = !isSetLineWidth;
-    if(isSetLineWidth){
+    if (isSetLineWidth) {
         lineWidthRange.style.display = "block";
-    }else{
+    } else {
         lineWidthRange.style.display = "none";
     }
-   
+
 }
-document.getElementById('setWidth').oninput = function(e){
+document.getElementById('setWidth').oninput = function(e) {
     lineWidth = e.target.value;
     lineWidth = parseInt(lineWidth);
-}
+};
 /*================Set line windth====================*/
 /*******************Set Color*************************/
-function setColor(picker){
-    color = "#"+picker.toString()
-    
+function setColor(picker) {
+    color = "#" + picker.toString();
+
 }
 /*******************Set Color*************************/
 /*================Desabled modules===================*/
@@ -253,43 +257,44 @@ function desabledModules() {
 }
 /*================Desabled modules===================*/
 /*================Remove object======================*/
-document.addEventListener('keyup', function(e){
+document.addEventListener('keyup', function(e) {
     if (e.key === "Delete") {
         removeObjects();
     }
 });
-function removeObjects(){
-        var activeObject = board.getActiveObject(),
-            activeGroup = board.getActiveGroup(),
-            name;
-        if (activeObject) {
-            if (confirm('Are you sure?')) {
-                name = activeObject.name;
-                board.remove(activeObject);
+
+function removeObjects() {
+    var activeObject = board.getActiveObject(),
+        activeGroup = board.getActiveGroup(),
+        name;
+    if (activeObject) {
+        if (confirm('Are you sure?')) {
+            name = activeObject.name;
+            board.remove(activeObject);
+            board.renderAll();
+            if (TogetherJS.running) {
+                TogetherJS.send({
+                    type: "removeTogether",
+                    name: name
+                }); //TogetherJS send
+            } // if TogetherJS running
+        }
+    } else if (activeGroup) {
+        if (confirm('Are you sure?')) {
+            var objectsInGroup = activeGroup.getObjects();
+            board.discardActiveGroup();
+            objectsInGroup.forEach(function(object) {
+                board.remove(object);
                 board.renderAll();
                 if (TogetherJS.running) {
                     TogetherJS.send({
                         type: "removeTogether",
-                        name: name
+                        name: object.name
                     }); //TogetherJS send
                 } // if TogetherJS running
-            }
-        } else if (activeGroup) {
-            if (confirm('Are you sure?')) {
-                var objectsInGroup = activeGroup.getObjects();
-                board.discardActiveGroup();
-                objectsInGroup.forEach(function(object) {
-                    board.remove(object);
-                    board.renderAll();
-                    if (TogetherJS.running) {
-                        TogetherJS.send({
-                            type: "removeTogether",
-                            name: object.name
-                        }); //TogetherJS send
-                    } // if TogetherJS running
-                });
-            }
+            });
         }
+    }
 }
 TogetherJS.hub.on('removeTogether', function(msg) {
     if (!msg.sameUrl) {
@@ -311,21 +316,21 @@ board.on("object:modified", function(e) {
     var activeObject = board.getActiveObject(),
         activeGroup = board.getActiveGroup(),
         names = [];
-    if( activeObject ){
+    if (activeObject) {
         if (TogetherJS.running) {
             TogetherJS.send({
                 type: "modifiedTogether",
                 object: e.target,
                 name: e.target.name
             }); //TogetherJS send
-        } //TogetherJS running  
-    }else if( activeGroup ){
+        } //TogetherJS running
+    } else if (activeGroup) {
         var objectsInGroup = activeGroup.getObjects();
         objectsInGroup.forEach(function(object) {
             names.push(object.name);
-        })
+        });
         if (TogetherJS.running) {
-            console.log(activeGroup)
+            console.log(activeGroup);
             TogetherJS.send({
                 type: "modifiedObjectGroupTogether",
                 objects: activeGroup,
@@ -333,7 +338,7 @@ board.on("object:modified", function(e) {
             }); //TogetherJS send
         } // if TogetherJS running
     }
-    
+
 }); //object modified
 TogetherJS.hub.on('modifiedTogether', function(msg) {
     if (!msg.sameUrl) {
@@ -349,7 +354,7 @@ TogetherJS.hub.on('modifiedObjectGroupTogether', function(msg) {
 });
 
 function modifiedTogether(object, name) {
-    console.log(object)
+    console.log(object);
     var obj = board.getItemByName(name);
     if (name.indexOf('text') === 0) {
         //  textModified(name, object)
@@ -365,7 +370,7 @@ function modifiedTogether(object, name) {
             scaleY: object.scaleY,
             angle: object.angle
         }); //obj set
-    } else if(name.indexOf('free') === 0) {
+    } else if (name.indexOf('free') === 0) {
         obj.set({
             left: object.left,
             stroke: object.stroke,
@@ -398,10 +403,11 @@ function modifiedTogether(object, name) {
     obj.setCoords();
     board.renderAll();
 }
-function modifiedObjectGroupTogether(obj, names){
+
+function modifiedObjectGroupTogether(obj, names) {
     console.log(obj, names);
     var elements = [];
-    for (var i = 0; i < names.length; i++){
+    for (var i = 0; i < names.length; i++) {
         elements.push(board.getItemByName(names[i]));
     }
     var group = new fabric.Group(elements, {
@@ -411,7 +417,7 @@ function modifiedObjectGroupTogether(obj, names){
         scaleX: obj.scaleX,
         scaleT: obj.scaleY
     });
-    for( var i = 0; i < elements.length; i++ ){
+    for (var i = 0; i < elements.length; i++) {
         elements[i].remove();
     }
     group.setCoords();
@@ -420,26 +426,26 @@ function modifiedObjectGroupTogether(obj, names){
     console.log(items, group);
     group._restoreObjectsState();
     board.remove(group);
-    for (var i = 0; i < items.length; i++){
+    for (var i = 0; i < items.length; i++) {
         board.add(items[i]);
-        board.item(board.size()-1).hasControls = true;
+        board.item(board.size() - 1).hasControls = true;
     }
-    
+
     board.renderAll();
-    
+
 }
 /*=========================Object modified========================*/
 /*=========================free drawing===========================*/
 function startDrawingMode() {
     console.log('free drawing mode');
     toActivateTheModule(5);
-    board.on("mouse:down", function(){
-       if(!isDrawing && board.isDrawingMode){
-        isDrawing = true;
-        board.selection = false;
-        board.freeDrawingBrush.width = parseInt(lineWidth);
-        board.freeDrawingBrush.color = color;
-        } 
+    board.on("mouse:down", function() {
+        if (!isDrawing && board.isDrawingMode) {
+            isDrawing = true;
+            board.selection = false;
+            board.freeDrawingBrush.width = parseInt(lineWidth);
+            board.freeDrawingBrush.color = color;
+        }
     });
     board.on("mouse:up", function(e) {
         if (board.isDrawingMode && isDrawing) {
@@ -539,7 +545,7 @@ function textDrawingTogether(text) {
 /*=========================Rect drawing===========================*/
 
 function startRectDrawing() {
-    
+
     toActivateTheModule(0);
     var originY = null,
         originX = null,
@@ -575,31 +581,31 @@ function startRectDrawing() {
             if (rect) {
                 var width, height;
                 var pointer = board.getPointer(o.e);
-                if( originX > pointer.x && originY < pointer.y ){
-                   width = Math.abs(originY - pointer.y);
-                   height = Math.abs(originX - pointer.x);
-                   angle = 90;
+                if (originX > pointer.x && originY < pointer.y) {
+                    width = Math.abs(originY - pointer.y);
+                    height = Math.abs(originX - pointer.x);
+                    angle = 90;
                 }
-                if(originX > pointer.x && originY > pointer.y ){
-                   width = Math.abs(originX - pointer.x);
-                   height = Math.abs(originY - pointer.y);
-                   angle = 180;
+                if (originX > pointer.x && originY > pointer.y) {
+                    width = Math.abs(originX - pointer.x);
+                    height = Math.abs(originY - pointer.y);
+                    angle = 180;
                 }
-                if(originX < pointer.x && originY > pointer.y ){
-                   width = Math.abs(originY - pointer.y);
-                   height = Math.abs(originX - pointer.x);
-                   angle = 270;
+                if (originX < pointer.x && originY > pointer.y) {
+                    width = Math.abs(originY - pointer.y);
+                    height = Math.abs(originX - pointer.x);
+                    angle = 270;
                 }
-                if(originX < pointer.x && originY < pointer.y ){
-                   width = Math.abs(originX - pointer.x);
-                   height = Math.abs(originY - pointer.y);
-                   angle = 0;
+                if (originX < pointer.x && originY < pointer.y) {
+                    width = Math.abs(originX - pointer.x);
+                    height = Math.abs(originY - pointer.y);
+                    angle = 0;
                 }
                 rect.set({
                     width: width,
                     height: height,
                     angle: angle
-                }); //rect set 
+                }); //rect set
                 board.renderAll();
             }
         } // if isMouseDown = true && isRectMode = true
@@ -683,31 +689,31 @@ function startFillRectDrawing() {
             if (rect) {
                 var width, height;
                 var pointer = board.getPointer(o.e);
-                if( originX > pointer.x && originY < pointer.y ){
-                   width = Math.abs(originY - pointer.y);
-                   height = Math.abs(originX - pointer.x);
-                   angle = 90;
+                if (originX > pointer.x && originY < pointer.y) {
+                    width = Math.abs(originY - pointer.y);
+                    height = Math.abs(originX - pointer.x);
+                    angle = 90;
                 }
-                if(originX > pointer.x && originY > pointer.y ){
-                   width = Math.abs(originX - pointer.x);
-                   height = Math.abs(originY - pointer.y);
-                   angle = 180;
+                if (originX > pointer.x && originY > pointer.y) {
+                    width = Math.abs(originX - pointer.x);
+                    height = Math.abs(originY - pointer.y);
+                    angle = 180;
                 }
-                if(originX < pointer.x && originY > pointer.y ){
-                   width = Math.abs(originY - pointer.y);
-                   height = Math.abs(originX - pointer.x);
-                   angle = 270;
+                if (originX < pointer.x && originY > pointer.y) {
+                    width = Math.abs(originY - pointer.y);
+                    height = Math.abs(originX - pointer.x);
+                    angle = 270;
                 }
-                if(originX < pointer.x && originY < pointer.y ){
-                   width = Math.abs(originX - pointer.x);
-                   height = Math.abs(originY - pointer.y);
-                   angle = 0;
+                if (originX < pointer.x && originY < pointer.y) {
+                    width = Math.abs(originX - pointer.x);
+                    height = Math.abs(originY - pointer.y);
+                    angle = 0;
                 }
                 rect.set({
                     width: width,
                     height: height,
                     angle: angle
-                }); //rect set 
+                }); //rect set
                 board.renderAll();
             }
         } //isMouseDown
@@ -764,7 +770,7 @@ function startCircleDrawing() {
         if (isCircleMode && !isDrawing) {
             isDrawing = true;
             board.selection = false;
-            
+
             var date = new Date();
             name = "circle" + date.getTime();
             isMouseDown = true;
@@ -896,7 +902,7 @@ function startLineDrawing(e) {
             board.selection = true;
             isDrawing = false;
             pointer_end = board.getPointer(e.e);
-            var obj ={
+            var obj = {
                 p_s: pointer_start,
                 p_e: pointer_end,
                 name: name,
@@ -919,7 +925,6 @@ TogetherJS.hub.on('lineDrawingTogether', function(msg) {
 });
 
 function lineDrawingTogether(obj, name) {
-    console.log(obj.p_e.x)
     var line = new fabric.Line([obj.p_s.x, obj.p_s.y, obj.p_e.x, obj.p_e.y], {
         stroke: obj.line.stroke,
         strokeWidth: obj.line.strokeWidth,
@@ -999,10 +1004,11 @@ TogetherJS.hub.on('markerDrawingTogether', function(msg) {
     }
     markerDrawingTogether(msg.object, msg.name);
 });
+
 function markerDrawingTogether(object, name) {
     var marker = new fabric.Line([object.pointer_start.x, object.pointer_start.y, object.pointer_end.x, object.pointer_end.y], {
         stroke: object.stroke,
-        name:  name,
+        name: name,
         strokeWidth: object.strokeWidth
     });
     board.add(marker);
@@ -1014,20 +1020,20 @@ function markerDrawingTogether(object, name) {
 /*=========================Upload images=============================*/
 var isAddImageUrl = false;
 var imageUrl_div = document.getElementsByClassName('image-url')[0];
-imageUrl_div.style.top = items[10].offsetTop+"px";
-imageUrl_div.style.left = items[10].offsetLeft+48+"px";
-function addImagesUrl(){
+imageUrl_div.style.top = items[10].offsetTop + "px";
+imageUrl_div.style.left = items[10].offsetLeft + 48 + "px";
+
+function addImagesUrl() {
     isAddImageUrl = !isAddImageUrl;
-    if(isAddImageUrl){
+    if (isAddImageUrl) {
         imageUrl_div.style.display = "block";
-    }else{
+    } else {
         imageUrl_div.style.display = "none";
     }
 }
-document.getElementsByClassName('add-btn')[0].addEventListener('click', function(e){
+document.getElementsByClassName('add-btn')[0].addEventListener('click', function(e) {
     var url = document.getElementById('image_url');
-    console.log(url.value)
-    if( url.value == '' ){
+    if (url.value === '') {
         Materialize.toast('Image url is empty', 4000);
         return;
     }
@@ -1042,10 +1048,11 @@ document.getElementsByClassName('add-btn')[0].addEventListener('click', function
     }*/
     uploadImages(url.value);
 });
+
 function uploadImages(img_url) {
     var url = img_url;
     addImageOnBoard(url);
-    
+
     board.renderAll();
 }
 
@@ -1089,10 +1096,10 @@ function togetherAddImageOnBoard(url, name) {
 /*=========================Upload images=============================*/
 
 /*=================ZOOM==============================*/
-function onZoomIn(){
+function onZoomIn() {
     boardScale *= SCALE_FACTOR;
     var obj = board.getObjects();
-    for( var i in obj ){
+    for (var i in obj) {
         var scaleX = obj[i].scaleX,
             scaleY = obj[i].scaleY,
             left = obj[i].left,
@@ -1101,13 +1108,13 @@ function onZoomIn(){
             tempScaleY = scaleY * SCALE_FACTOR,
             tempLeft = left * SCALE_FACTOR,
             tempTop = top * SCALE_FACTOR;
-            obj[i].set({
-                scaleX: tempScaleX,
-                scaleY: tempScaleY,
-                left: tempLeft,
-                top: tempTop
-            });
-            obj[i].setCoords();
+        obj[i].set({
+            scaleX: tempScaleX,
+            scaleY: tempScaleY,
+            left: tempLeft,
+            top: tempTop
+        });
+        obj[i].setCoords();
     }
     board.renderAll();
     boardScale = 1;
@@ -1123,10 +1130,11 @@ TogetherJS.hub.on('togetherOnZoomIn', function(msg) {
     }
     togetherOnZoomIn();
 });
-function togetherOnZoomIn(){
+
+function togetherOnZoomIn() {
     boardScale *= SCALE_FACTOR;
     var obj = board.getObjects();
-    for( var i in obj ){
+    for (var i in obj) {
         var scaleX = obj[i].scaleX,
             scaleY = obj[i].scaleY,
             left = obj[i].left,
@@ -1135,21 +1143,22 @@ function togetherOnZoomIn(){
             tempScaleY = scaleY * SCALE_FACTOR,
             tempLeft = left * SCALE_FACTOR,
             tempTop = top * SCALE_FACTOR;
-            obj[i].set({
-                scaleX: tempScaleX,
-                scaleY: tempScaleY,
-                left: tempLeft,
-                top: tempTop
-            });
-            obj[i].setCoords();
+        obj[i].set({
+            scaleX: tempScaleX,
+            scaleY: tempScaleY,
+            left: tempLeft,
+            top: tempTop
+        });
+        obj[i].setCoords();
     }
     board.renderAll();
     boardScale = 1;
 }
-function onZoomOut(){
+
+function onZoomOut() {
     boardScale = boardScale / SCALE_FACTOR;
     var obj = board.getObjects();
-    for( var i in obj ){
+    for (var i in obj) {
         var scaleX = obj[i].scaleX,
             scaleY = obj[i].scaleY,
             left = obj[i].left,
@@ -1158,13 +1167,13 @@ function onZoomOut(){
             tempScaleY = scaleY * (1 / SCALE_FACTOR),
             tempLeft = left * (1 / SCALE_FACTOR),
             tempTop = top * (1 / SCALE_FACTOR);
-            obj[i].set({
-                scaleX: tempScaleX,
-                scaleY: tempScaleY,
-                left: tempLeft,
-                top: tempTop
-            });
-            obj[i].setCoords();
+        obj[i].set({
+            scaleX: tempScaleX,
+            scaleY: tempScaleY,
+            left: tempLeft,
+            top: tempTop
+        });
+        obj[i].setCoords();
     }
     board.renderAll();
     boardScale = 1;
@@ -1173,7 +1182,7 @@ function onZoomOut(){
             type: "togetherOnZoomOut"
         });
     }
-    
+
 }
 TogetherJS.hub.on('togetherOnZoomOut', function(msg) {
     if (!msg.sameUrl) {
@@ -1181,10 +1190,11 @@ TogetherJS.hub.on('togetherOnZoomOut', function(msg) {
     }
     togetherOnZoomOut();
 });
-function togetherOnZoomOut(){
+
+function togetherOnZoomOut() {
     boardScale = boardScale / SCALE_FACTOR;
     var obj = board.getObjects();
-    for( var i in obj ){
+    for (var i in obj) {
         var scaleX = obj[i].scaleX,
             scaleY = obj[i].scaleY,
             left = obj[i].left,
@@ -1193,13 +1203,13 @@ function togetherOnZoomOut(){
             tempScaleY = scaleY * (1 / SCALE_FACTOR),
             tempLeft = left * (1 / SCALE_FACTOR),
             tempTop = top * (1 / SCALE_FACTOR);
-            obj[i].set({
-                scaleX: tempScaleX,
-                scaleY: tempScaleY,
-                left: tempLeft,
-                top: tempTop
-            });
-            obj[i].setCoords();
+        obj[i].set({
+            scaleX: tempScaleX,
+            scaleY: tempScaleY,
+            left: tempLeft,
+            top: tempTop
+        });
+        obj[i].setCoords();
     }
     board.renderAll();
     boardScale = 1;
