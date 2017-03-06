@@ -1,6 +1,6 @@
 #SA - Board
 
-[![] (https://slabkiy.github.io/assets/images/sa-board.png)](https://slabkiy.github.io/SA-board)
+[![] (https://slabkiy.github.io/assets/images/sa-board.png)](https://slabkiy.github.io/SA-Board/)
 
 ##What is it? 0_o
 
